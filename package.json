@@ -1,0 +1,8 @@
+{
+  "name": "we_got_tickets_scraper",
+  "version": "1.0.0",
+  "description": "WeGotTickets UK web scraper",
+  "main": "index.js",
+  "author": "anon",
+  "license": "MIT"
+}
