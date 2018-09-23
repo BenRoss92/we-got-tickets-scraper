@@ -4,5 +4,16 @@
   "description": "WeGotTickets UK web scraper",
   "main": "index.js",
   "author": "anon",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node ./src"
+  },
+  "dependencies": {
+    "node": "^10.10.0"
+  }
 }
