@@ -2,7 +2,7 @@ var chai = require('chai');
 const expect = chai.expect;
 
 const nock = require('nock');
-const allSearchResults = require('./helpers/all-search-results.spec').allSearchResults;
+const eventListPage = require('./helpers/event-list-page.spec').eventListPage;
 const eventPage = require('./helpers/event-page.spec').eventPage;
 
 const fetchHtmlDoc = require('../src/fetch-event-details').fetchHtmlDoc;
@@ -18,7 +18,7 @@ describe('fetch event details', () => {
 
             nock(hostName)
                 .get(path)
-                .reply(200, allSearchResults);
+                .reply(200, eventListPage);
             
             // when
             const htmlDoc = await fetchHtmlDoc(hostName + path);
@@ -51,7 +51,7 @@ describe('fetch event details', () => {
 
             nock(hostName)
                 .get(path)
-                .reply(200, allSearchResults);
+                .reply(200, eventListPage);
             
             // when
             const eventLinks = await fetchEventLinks(hostName + path);

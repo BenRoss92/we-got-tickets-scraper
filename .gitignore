@@ -1,2 +1,8 @@
+# node modules
 node_modules
+
+# output from `#saveToFile` test in `save-event-details.spec.js`
+test/helpers/events-output.json
+
+# my to-do list and draft notes
 my-notes.md

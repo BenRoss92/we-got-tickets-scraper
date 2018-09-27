@@ -8,7 +8,7 @@ const findDate = require('../src/find-event-details').findDate;
 const findPrice = require('../src/find-event-details').findPrice;
 const findEventDetails = require('../src/find-event-details').findEventDetails;
 
-const allSearchResults = require('../test/helpers/all-search-results.spec').allSearchResults;
+const eventListPage = require('../test/helpers/event-list-page.spec').eventListPage;
 const eventPage = require('../test/helpers/event-page.spec').eventPage;
 
 describe('find event information', () => {
@@ -29,7 +29,7 @@ describe('find event information', () => {
             ];
 
             // when
-            const links = findEventLinks(allSearchResults);
+            const links = findEventLinks(eventListPage);
             
             // then
             expect(links).to.have.a.lengthOf(10);
