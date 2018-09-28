@@ -1,7 +1,7 @@
 const axios = require('axios');
 
-const findEventLinks = require('./find-event-details').findEventLinks;
-const findEventDetails = require('./find-event-details').findEventDetails;
+const findEventLinks = require('./find').findEventLinks;
+const findEventDetails = require('./find').findEventDetails;
 
 async function fetchHtmlDoc(url) {
     try {
@@ -33,8 +33,17 @@ async function fetchEventDetails(url) {
     }
 }
 
+async function fetchEvents(links) {
+    const eventDetails = links.map(async (link) => {
+        return await fetchEventDetails(link);
+    });
+
+    return await Promise.all(eventDetails);
+}
+
 module.exports = {
     fetchHtmlDoc,
     fetchEventLinks,
     fetchEventDetails,
+    fetchEvents,
 }

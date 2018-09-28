@@ -2,12 +2,12 @@ var chai = require('chai');
 const expect = chai.expect;
 
 const nock = require('nock');
-const eventListPage = require('./helpers/event-list-page.spec').eventListPage;
-const eventPage = require('./helpers/event-page.spec').eventPage;
+const eventListPage = require('../helpers/event-list-page.spec').eventListPage;
+const eventPage = require('../helpers/event-page.spec').eventPage;
 
-const fetchHtmlDoc = require('../src/fetch-event-details').fetchHtmlDoc;
-const fetchEventLinks = require('../src/fetch-event-details').fetchEventLinks;
-const fetchEventDetails = require('../src/fetch-event-details').fetchEventDetails;
+const fetchHtmlDoc = require('../../src/event-details/fetch').fetchHtmlDoc;
+const fetchEventLinks = require('../../src/event-details/fetch').fetchEventLinks;
+const fetchEventDetails = require('../../src/event-details/fetch').fetchEventDetails;
 
 describe('fetch event details', () => {
     describe('#fetchHtmlDoc', () => {

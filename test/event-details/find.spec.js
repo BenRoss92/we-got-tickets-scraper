@@ -1,20 +1,19 @@
 var chai = require('chai');
 const expect = chai.expect;
 
-const findEventLinks = require('../src/find-event-details').findEventLinks;
-const findCityAndVenue = require('../src/find-event-details').findCityAndVenue;
-const findArtists = require('../src/find-event-details').findArtists;
-const findDate = require('../src/find-event-details').findDate;
-const findPrice = require('../src/find-event-details').findPrice;
-const findEventDetails = require('../src/find-event-details').findEventDetails;
+const findEventLinks = require('../../src/event-details/find').findEventLinks;
+const findCityAndVenue = require('../../src/event-details/find').findCityAndVenue;
+const findArtists = require('../../src/event-details/find').findArtists;
+const findDate = require('../../src/event-details/find').findDate;
+const findPrice = require('../../src/event-details/find').findPrice;
+const findEventDetails = require('../../src/event-details/find').findEventDetails;
 
-const eventListPage = require('../test/helpers/event-list-page.spec').eventListPage;
-const eventPage = require('../test/helpers/event-page.spec').eventPage;
+const eventListPage = require('../helpers/event-list-page.spec').eventListPage;
+const eventPage = require('../helpers/event-page.spec').eventPage;
 
 describe('find event information', () => {
     describe('#findEventLinks', () => {
         it('returns an array of event page links, given HTML', () => {
-            // given
             const expectedLinks = [
                 'https://www.wegottickets.com/event/444822',
                 'https://www.wegottickets.com/event/404065',
@@ -28,10 +27,8 @@ describe('find event information', () => {
                 'https://www.wegottickets.com/event/447389',
             ];
 
-            // when
             const links = findEventLinks(eventListPage);
             
-            // then
             expect(links).to.have.a.lengthOf(10);
             expect(links).to.eql(expectedLinks);
         });
@@ -86,6 +83,4 @@ describe('find event information', () => {
             expect(details).to.eql(expectedDetails);
         });
     });
-
-
 });

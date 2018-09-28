@@ -3,7 +3,7 @@ const expect = chai.expect;
 
 const fs = require('fs');
 
-const saveToFile = require('../src/save-event-details').saveToFile;
+const saveToFile = require('../../src/event-details/save').saveToFile;
 
 describe('save event details', () => {
     describe('#saveToFile', () => {
@@ -33,7 +33,7 @@ describe('save event details', () => {
                 },
             ];
             
-            const filePath = './test/helpers/events-output.json';
+            const filePath = './test/helpers/events-output.spec.json';
 
             // when
             saveToFile(filePath, array);

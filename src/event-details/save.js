@@ -5,7 +5,7 @@ function saveToFile(filePath, array, replacer = null, whiteSpace = 2) {
 
     fs.writeFile(filePath, stringifiedArray, (error) => {
         if (error) throw error;
-        console.log(`events saved to file path '${filePath}'!`);
+        console.log(`Successfully saved events to file path '${filePath}'`);
     });
 }
 
