@@ -1,5 +1,19 @@
 const cheerio = require('cheerio');
 
+function findEventType(eventPage) {
+    const $ = cheerio.load(eventPage);
+    
+    const jsonLdString = $('script[type="application/ld+json"]').html();
+
+    if (jsonLdString === null) {
+        return null;
+    }
+    
+    return JSON.parse(jsonLdString
+            .replace(/\n/g,"")
+    )['@type'];
+}
+
 function findEventLinks(htmlDoc) {
     const $ = cheerio.load(htmlDoc);
     
@@ -45,6 +59,7 @@ function findEventDetails(eventPage) {
 }
 
 module.exports = {
+    findEventType,
     findEventLinks,
     findArtists,
     findCityAndVenue,
