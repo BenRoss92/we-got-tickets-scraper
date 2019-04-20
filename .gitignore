@@ -1,5 +1,5 @@
 # node modules
 node_modules
 
-# output from `#saveToFile` test in `save-event-details.spec.js`
+# test output - from `#saveToFile` test in `save-event-details.spec.js`
 test/helpers/events-output.spec.json
