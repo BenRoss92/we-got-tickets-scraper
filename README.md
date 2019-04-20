@@ -4,9 +4,9 @@
 
 ### Brief
 
-The WeGotTickets UK homepage is at http://www.wegotickets.co.uk/. Write software that scrapes concert information from the pages on this site and outputs the data in a machine readable format of your choice (e.g. JSON, XML, CSV etc.).
+The WeGotTickets UK homepage is at https://www.wegottickets.com/. Write software that scrapes concert information from the pages on this site and outputs the data in a machine readable format of your choice (e.g. JSON, XML, CSV etc.).
 
-The first page of the 'browse all listings' section of the site is at http://www.wegotickets.com/searchresults/all
+The first page of the 'browse all listings' section of the site is at https://www.wegottickets.com/searchresults/all
 
 Each event also has its own page, which is linked to from the event titles. Your script should attempt to identify:
 * the artists playing
