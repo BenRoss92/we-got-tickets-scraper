@@ -40,7 +40,7 @@ N.B. Known issue - when saving characters from other languages to the output fil
     * (A more performent way than the above:) I would try writing only the event details from a single event list to the output file as an array, then fetch the next event details and try to append this file with the new data - possibly trying to use `fs.write()` to prepend the closing array bracket with additional JSON objects.
     * Looping through all event list pages - to work out whether there is a next event list page to scrape data from, when inspecting the current event list page (i.e. the first page), I would check whether a `.pagination_link_text nextlink` class exists, and if so, retrieve the URL in the `href` element inside of this class to then fetch the HTML document for this URL (in this case, the HTML would represent the second event list page; page 2). This would be performed in a loop until no new page is found, at which point all of the event details would be saved to the output file.
 * Improving my code
-    * Would write tests for `fetchEvents` and `index.js` functions with mock API calls.
+    * Would write tests for `index.js` function/s with mock API calls.
     * Fix formatting of characters from other languages when being saved to file - e.g. `Gellért` becomes `Gell�rt`.
     * Attempting to find a solution for mocking cheerio library to speed up tests.
 
@@ -72,7 +72,7 @@ N.B. Known issue - when saving characters from other languages to the output fil
 
 ### How I approached development
 
-* I followed TDD, with the exception of scraping of event details from a list of events (i.e. the `fetchEvents` function). When adding a test for this function, the test timed out due to taking too long to make real API calls. Due to time constraints, I ran out of time implementing a test with mocked API calls, as I needed to create fixtures for every event link. In the interest of finishing a working partial solution, I decided to omit this test.
+* I used TDD (with the exception of integration testing for index.js)
 
 * In my `/src` files, I ran my code with differently formatted result data to handle differing formats (see `/event-details/format.js` for formatting handlers)
 * I used Git with feature branching and pull requests to a private repo to review code for a second time (after reviewing first locally) to lower the likelihood of merging mistakes
