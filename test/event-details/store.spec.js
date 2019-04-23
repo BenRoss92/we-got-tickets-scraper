@@ -48,7 +48,11 @@ describe('manage store of events', () => {
     describe('#createStore', () => {
         const testPath = './test/helpers/events-output.spec.csv';
 
-        beforeEach(async () => {
+        beforeEach('If exists, delete test helper file before each test runs', async () => {
+            await deleteIfExists(testPath);
+        });
+
+        after('If exists, delete test helper file after all tests have run', async () => {
             await deleteIfExists(testPath);
         });
         
