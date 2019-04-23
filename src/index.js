@@ -56,4 +56,4 @@ const scrapeEventDetails = async (
 
 scrapeEventDetails()
     .then(() => console.log('Finished all scraping!'))
-    .catch((err) => console.error(err.message));
+    .catch((err) => console.error(err));
