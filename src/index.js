@@ -20,6 +20,12 @@ const scrapeEventDetails = async (
     path = outputFilePath,
     headers = csvHeaders,
 ) => {
+    const csvWriter = createCsvWriter({
+        path,
+        header: headers,
+        append: true,
+    });
+
     const headerString = formatHeaders(headers);
 
     await createStore(path, headerString);
@@ -37,12 +43,6 @@ const scrapeEventDetails = async (
         const unformattedEvent = findEventDetails(eventPage);
 
         const formattedEvent = formatEventDetails(unformattedEvent);
-
-        const csvWriter = createCsvWriter({
-            path,
-            header: headers,
-            append: true,
-        });
 
         await csvWriter.writeRecords([formattedEvent]);
         console.log(`Successfully saved event to file path '${path}'`);
