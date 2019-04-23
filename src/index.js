@@ -19,7 +19,7 @@ const scrapeEventDetails = async (
 ) => {
     const headers = 'artists,city,venue,date,price\n';
     await createStore(path, headers);
-    console.log(`File ${path} successfully created with data ${headers}`);
+    console.log(`File '${path}' successfully created with headers:\n ${headers}`);
 
     const eventLinks = await fetchEventLinks(url);
 
@@ -45,9 +45,8 @@ const scrapeEventDetails = async (
     });
 
     await Promise.all(fetchEvents);
-    console.log('Finished scraping page');
 };
 
 scrapeEventDetails()
-    .then(() => console.log('Finished all scraping!'))
+    .then(() => console.log('Finished scraping page 1'))
     .catch((err) => console.error(err));
