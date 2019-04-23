@@ -6,6 +6,7 @@ const formatVenue = require('../../src/event-details/format').formatVenue;
 const formatArtists = require('../../src/event-details/format').formatArtists;
 const formatEventDetails = require('../../src/event-details/format').formatEventDetails;
 const formatHeaders = require('../../src/event-details/format').formatHeaders;
+const formatDateAndTime = require('../../src/event-details/format').formatDateAndTime;
 
 describe('format headers', () => {
   describe('#formatHeaders', () => {
@@ -116,22 +117,31 @@ describe('format event details', () => {
     });
   });
 
+  describe('#formatDateAndTime', () => {
+    it('returns correctly formatted date and time', () => {
+      const dateAndTime = ['Wed 24th Apr, 2019', 'Door time: 7:30pm'];
+      const expectedDateAndTime = 'Wed 24th Apr, 2019. Door time: 7:30pm'
+
+      expect(formatDateAndTime(dateAndTime)).to.equal(expectedDateAndTime);
+    });
+  });
+
   describe('#formatEventDetails', () => {
     it('correctly formats unformatted event details', () => {
       // given
       const unformattedDetails = {
-        artists: 'THE DREAMERS',
-        cityAndVenue: 'DARLINGTON: Harrowgate Club & Institute Ltd',
-        date: 'FRI 28TH SEP, 2018 6:30pm',
-        price: '£9.90',
+        artists: 'PUPPY',
+        cityAndVenue: 'LEEDS: The Brudenell Social Club',
+        dateAndTime: ['Wed 24th Apr, 2019', 'Door time: 7:30pm'],
+        price: '£11.00',
       };
 
       const formattedDetails = {
-        artists: 'The Dreamers',
-        city: 'Darlington',
-        venue: 'Harrowgate Club & Institute Ltd',
-        date: 'FRI 28TH SEP, 2018 6:30pm',
-        price: '£9.90',
+        artists: 'Puppy',
+        city: 'Leeds',
+        venue: 'The Brudenell Social Club',
+        date: 'Wed 24th Apr, 2019. Door time: 7:30pm',
+        price: '£11.00',
       };
 
       // when

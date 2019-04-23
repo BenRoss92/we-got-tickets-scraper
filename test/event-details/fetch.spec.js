@@ -65,13 +65,13 @@ describe('fetch event details', () => {
         it('returns event details from an event page', async () => {
             // given
             const hostName = 'https://www.wegottickets.com';
-            const path = '/event/429096';
+            const path = '/event/461540';
 
             const expectedDetails = {
-                artists: 'THE DREAMERS',
-                cityAndVenue: 'DARLINGTON: Harrowgate Club & Institute Ltd',
-                date: 'FRI 28TH SEP, 2018 6:30pm',
-                price: '£9.90',
+                artists: 'PUPPY',
+                cityAndVenue: 'LEEDS: The Brudenell Social Club',
+                dateAndTime: ['Wed 24th Apr, 2019', 'Door time: 7:30pm'],
+                price: '£11.00',
             };
 
             nock(hostName)

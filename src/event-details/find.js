@@ -12,7 +12,7 @@ const findEventType = eventPage => {
     return JSON.parse(jsonLdString
             .replace(/\n/g,"")
     )['@type'];
-}
+};
 
 const findEventLinks = htmlDoc => {
     const $ = cheerio.load(htmlDoc);
@@ -31,43 +31,46 @@ const findEventLinks = htmlDoc => {
 const findArtists = eventPage => {
     const $ = cheerio.load(eventPage);
     return $('.event-information').find('h1').text();
-}
+};
 
 const findCityAndVenue = eventPage => {
     const $ = cheerio.load(eventPage);
     return $('.venue-details').find('h2').text();
-}
+};
 
-const findDate = eventPage => {
+const findDateAndTime = eventPage => {
     const $ = cheerio.load(eventPage);
-    return $('.venue-details').find('h4').text();
-}
+    return $('.doorTime')
+        .html()
+        .split('<br>')
+        .map((html) => html.trim());
+};
 
 const findPrice = eventPage => {
     const $ = cheerio.load(eventPage);
     return $('.BuyBox').find('strong').text();
-}
+};
 
 const findEventDetails = eventPage => {
     const artists = findArtists(eventPage);
     const cityAndVenue = findCityAndVenue(eventPage);
-    const date = findDate(eventPage);
+    const dateAndTime = findDateAndTime(eventPage);
     const price = findPrice(eventPage);
 
     return {
         artists,
         cityAndVenue,
-        date,
+        dateAndTime,
         price,
     };
-}
+};
 
 module.exports = {
     findEventType,
     findEventLinks,
     findArtists,
     findCityAndVenue,
-    findDate,
+    findDateAndTime,
     findPrice,
     findEventDetails,
 }

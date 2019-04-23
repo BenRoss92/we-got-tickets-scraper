@@ -32,14 +32,16 @@ const formatVenue = cityAndVenue => {
   return 'WARNING: CHECK FORMATTING';
 };
 
+const formatDateAndTime = dateAndTime => dateAndTime.join('. ');
+
 const formatEventDetails = unformattedDetails => {
-  const {artists, cityAndVenue, date, price } = unformattedDetails;
+  const {artists, cityAndVenue, dateAndTime, price } = unformattedDetails;
 
   return {
     artists: formatArtists(artists),
     city: formatCity(cityAndVenue),
     venue: formatVenue(cityAndVenue),
-    date,
+    date: formatDateAndTime(dateAndTime),
     price,
   };
 };
@@ -52,4 +54,5 @@ module.exports = {
   formatArtists,
   formatEventDetails,
   formatHeaders,
+  formatDateAndTime,
 };

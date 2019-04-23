@@ -5,7 +5,7 @@ const findEventType = require('../../src/event-details/find').findEventType;
 const findEventLinks = require('../../src/event-details/find').findEventLinks;
 const findCityAndVenue = require('../../src/event-details/find').findCityAndVenue;
 const findArtists = require('../../src/event-details/find').findArtists;
-const findDate = require('../../src/event-details/find').findDate;
+const findDateAndTime = require('../../src/event-details/find').findDateAndTime;
 const findPrice = require('../../src/event-details/find').findPrice;
 const findEventDetails = require('../../src/event-details/find').findEventDetails;
 
@@ -14,7 +14,6 @@ const musicEventPage = require('../helpers/music-event-page.spec').musicEventPag
 const noTypeEventPage = require('../helpers/no-type-event-page.spec').noTypeEventPage;
 
 describe('find event information', () => {
-    
     describe('#findEventType', () => {
         describe('when event type is present', () => {
             it('finds the event type', () => {
@@ -59,7 +58,7 @@ describe('find event information', () => {
 
     describe('#findArtists', () => {
         it('finds artists from HTML', () => {
-            const expectedArtists = 'THE DREAMERS';
+            const expectedArtists = 'PUPPY';
 
             const artists = findArtists(musicEventPage);
             expect(artists).to.equal(expectedArtists);
@@ -68,25 +67,25 @@ describe('find event information', () => {
 
     describe('#findCityAndVenue', () => {
         it('finds city and venue from HTML', () => {
-            const expectedCityAndVenue = 'DARLINGTON: Harrowgate Club & Institute Ltd';
+            const expectedCityAndVenue = 'LEEDS: The Brudenell Social Club';
 
             const cityAndVenue = findCityAndVenue(musicEventPage);
             expect(cityAndVenue).to.equal(expectedCityAndVenue);
         });
     });
 
-    describe('#findDate', () => {
-        it('finds date and time from HTML', () => {
-            const expectedDateAndTime = 'FRI 28TH SEP, 2018 6:30pm';
+    describe('#findDateAndTime', () => {
+        it('returns date and time array from HTML', () => {
+            const expectedDateAndTime = ['Wed 24th Apr, 2019', 'Door time: 7:30pm'];
 
-            const dateAndTime = findDate(musicEventPage);
-            expect(dateAndTime).to.equal(expectedDateAndTime);
+            const dateAndTime = findDateAndTime(musicEventPage);
+            expect(dateAndTime).to.eql(expectedDateAndTime);
         });
     });
 
     describe('#findPrice', () => {
         it('finds price from HTML', () => {
-            const expectedPrice = '£9.90';
+            const expectedPrice = '£11.00';
 
             const price = findPrice(musicEventPage);
             expect(price).to.equal(expectedPrice);
@@ -96,10 +95,10 @@ describe('find event information', () => {
     describe('#findEventDetails', () => {
         it('returns unformatted event details from HTML as JSON', () => {
             const expectedDetails = {
-                'artists': 'THE DREAMERS',
-                'cityAndVenue': 'DARLINGTON: Harrowgate Club & Institute Ltd',
-                'date': 'FRI 28TH SEP, 2018 6:30pm',
-                'price': '£9.90',
+                'artists': 'PUPPY',
+                'cityAndVenue': 'LEEDS: The Brudenell Social Club',
+                'dateAndTime': ['Wed 24th Apr, 2019', 'Door time: 7:30pm'],
+                'price': '£11.00',
             };
             
             const details = findEventDetails(musicEventPage);
