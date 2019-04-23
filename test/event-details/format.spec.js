@@ -5,6 +5,19 @@ const formatCity = require('../../src/event-details/format').formatCity;
 const formatVenue = require('../../src/event-details/format').formatVenue;
 const formatArtists = require('../../src/event-details/format').formatArtists;
 const formatEventDetails = require('../../src/event-details/format').formatEventDetails;
+const formatHeaders = require('../../src/event-details/format').formatHeaders;
+
+describe('format headers', () => {
+  describe('#formatHeaders', () => {
+    it('formats an array of headers into CSV headers', () => {
+      const headerArray = ['artists', 'city', 'venue', 'date', 'price'];
+
+      const headerString = formatHeaders(headerArray);
+      
+      expect(headerString).to.eql("artists,city,venue,date,price\n");
+    });
+  });
+});
 
 describe('format event details', () => {
   const formattingWarning = 'WARNING: CHECK FORMATTING'; 

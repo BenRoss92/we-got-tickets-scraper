@@ -7,19 +7,23 @@ const findEventType = require('./event-details/find').findEventType;
 const findEventDetails = require('./event-details/find').findEventDetails;
 
 const formatEventDetails = require('./event-details/format').formatEventDetails;
+const formatHeaders = require('./event-details/format').formatHeaders;
 
 const createStore = require('./event-details/store').createStore;
 
 const outputFilePath = './src/events-output.csv';
 const allEventsUrl = 'https://www.wegottickets.com/searchresults/all';
+const csvHeaders = ['artists', 'city', 'venue', 'date', 'price'];
 
 const scrapeEventDetails = async (
     url = allEventsUrl,
     path = outputFilePath,
+    headers = csvHeaders,
 ) => {
-    const headers = 'artists,city,venue,date,price\n';
-    await createStore(path, headers);
-    console.log(`File '${path}' successfully created with headers:\n ${headers}`);
+    const headerString = formatHeaders(headers);
+
+    await createStore(path, headerString);
+    console.log(`File '${path}' successfully created with headers:\n ${headerString}`);
 
     const eventLinks = await fetchEventLinks(url);
 
@@ -36,7 +40,7 @@ const scrapeEventDetails = async (
 
         const csvWriter = createCsvWriter({
             path,
-            header: ['artists', 'city', 'venue', 'date', 'price'],
+            header: headers,
             append: true,
         });
 
