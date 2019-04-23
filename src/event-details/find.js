@@ -1,11 +1,29 @@
 const cheerio = require('cheerio');
 
+function findEventType(eventPage) {
+    const $ = cheerio.load(eventPage);
+    
+    const jsonLdString = $('script[type="application/ld+json"]').html();
+
+    if (jsonLdString === null) {
+        return null;
+    }
+    
+    return JSON.parse(jsonLdString
+            .replace(/\n/g,"")
+    )['@type'];
+}
+
 function findEventLinks(htmlDoc) {
     const $ = cheerio.load(htmlDoc);
     
     const eventElements = $('h2');
 
-    return eventElements.map((index, element) => {
+    /**
+     * Cheerio's `.map` method requires the use of an index parameter.
+     * We do not use the index here, therefore the `_` indicates that it should be ignored.
+     */
+    return eventElements.map((_index, element) => {
         return $(element).find('a').attr('href');
     }).get();
 };
@@ -45,6 +63,7 @@ function findEventDetails(eventPage) {
 }
 
 module.exports = {
+    findEventType,
     findEventLinks,
     findArtists,
     findCityAndVenue,

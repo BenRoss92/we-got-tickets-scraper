@@ -33,17 +33,8 @@ async function fetchEventDetails(url) {
     }
 }
 
-async function fetchEvents(links) {
-    const eventDetails = links.map(async (link) => {
-        return await fetchEventDetails(link);
-    });
-
-    return await Promise.all(eventDetails);
-}
-
 module.exports = {
     fetchHtmlDoc,
     fetchEventLinks,
     fetchEventDetails,
-    fetchEvents,
 }

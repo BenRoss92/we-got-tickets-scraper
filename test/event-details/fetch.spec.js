@@ -3,7 +3,7 @@ const expect = chai.expect;
 
 const nock = require('nock');
 const eventListPage = require('../helpers/event-list-page.spec').eventListPage;
-const eventPage = require('../helpers/event-page.spec').eventPage;
+const musicEventPage = require('../helpers/music-event-page.spec').musicEventPage;
 
 const fetchHtmlDoc = require('../../src/event-details/fetch').fetchHtmlDoc;
 const fetchEventLinks = require('../../src/event-details/fetch').fetchEventLinks;
@@ -76,7 +76,7 @@ describe('fetch event details', () => {
 
             nock(hostName)
                 .get(path)
-                .reply(200, eventPage);
+                .reply(200, musicEventPage);
 
             // when
             const eventDetails = await fetchEventDetails(hostName + path);
