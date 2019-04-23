@@ -44,9 +44,12 @@ const formatEventDetails = unformattedDetails => {
   };
 };
 
+const formatHeaders = headers => `${headers.join(',')}\n`;
+
 module.exports = {
   formatCity,
   formatVenue,
   formatArtists,
   formatEventDetails,
+  formatHeaders,
 };

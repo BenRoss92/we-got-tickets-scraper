@@ -3,7 +3,7 @@ const axios = require('axios');
 const findEventLinks = require('./find').findEventLinks;
 const findEventDetails = require('./find').findEventDetails;
 
-async function fetchHtmlDoc(url) {
+const fetchHtmlDoc = async (url) => {
     try {
         const response = await axios.get(url, {
             responseType: 'text',
@@ -14,7 +14,7 @@ async function fetchHtmlDoc(url) {
     }
 }
 
-async function fetchEventLinks(url) {
+const fetchEventLinks = async (url) => {
     try {
         const htmlDoc = await fetchHtmlDoc(url);
         return findEventLinks(htmlDoc);
@@ -23,7 +23,7 @@ async function fetchEventLinks(url) {
     }
 }
 
-async function fetchEventDetails(url) {
+const fetchEventDetails = async (url) => {
     try {
       const eventPage = await fetchHtmlDoc(url);
 
