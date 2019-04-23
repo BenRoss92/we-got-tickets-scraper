@@ -3,21 +3,17 @@ const expect = chai.expect;
 
 const fs = require('fs');
 
-const createStore = require('../../src/event-details/manage-store').createStore;
+const createStore = require('../../src/event-details/store').createStore;
 
 const deleteIfExists = (path) => {
     return new Promise((resolve, reject) => {
         fs.access(path, async (err) => {
             if (err && err.message.includes('no such file or directory')) { 
-                // console.log(`${path} file path does NOT exist`);
                 resolve();
             } else if (err && !(err.message.includes('no such file or directory'))) {
-                // console.log('some type of other error:' + err);
                 reject(err);
             } else {
-                // console.log(`${path} file path DOES exist. Deleting it`);
                 await deleteStore(path);
-                // console.log(`deleted ${path} file`);
                 resolve();
             }
         });

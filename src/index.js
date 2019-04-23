@@ -8,7 +8,7 @@ const findEventDetails = require('./event-details/find').findEventDetails;
 
 const formatEventDetails = require('./event-details/format').formatEventDetails;
 
-const createStore = require('./event-details/manage-store').createStore;
+const createStore = require('./event-details/store').createStore;
 
 const outputFilePath = './src/events-output.csv';
 const allEventsUrl = 'https://www.wegottickets.com/searchresults/all';
