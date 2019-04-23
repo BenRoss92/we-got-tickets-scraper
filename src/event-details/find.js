@@ -19,7 +19,11 @@ function findEventLinks(htmlDoc) {
     
     const eventElements = $('h2');
 
-    return eventElements.map((index, element) => {
+    /**
+     * Cheerio's `.map` method requires the use of an index parameter.
+     * We do not use the index here, therefore the `_` indicates that it should be ignored.
+     */
+    return eventElements.map((_index, element) => {
         return $(element).find('a').attr('href');
     }).get();
 };
