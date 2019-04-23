@@ -36,13 +36,7 @@ const scrapeEventDetails = async (
 
         const csvWriter = createCsvWriter({
             path,
-            header: [
-                {id: 'artists', title: 'artists'},
-                {id: 'city', title: 'city'},
-                {id: 'venue', title: 'venue'},
-                {id: 'date', title: 'date'},
-                {id: 'price', title: 'price'},
-            ],
+            header: ['artists', 'city', 'venue', 'date', 'price'],
             append: true,
         });
 
