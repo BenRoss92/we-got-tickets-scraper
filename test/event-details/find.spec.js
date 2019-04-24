@@ -86,8 +86,10 @@ describe('find event information', () => {
 
     describe('#findPrices', () => {
         describe('when only one price exists', () => {
-            it('returns an array of one object containing a title and value', () => {
-                const expectedPrices = [{ title: 'General Admission', value: '£11.00' }];
+            it('returns an array containing a price with a title and value', () => {
+                const expectedPrices = [
+                    { title: 'General Admission', value: '£11.00' }
+                ];
     
                 const prices = findPrices(musicEventPage);
                 expect(prices).to.eql(expectedPrices);
@@ -95,7 +97,7 @@ describe('find event information', () => {
         });
 
         describe('when more than one price exists', () => {
-            it('returns an array of objects containing a title and value', () => {
+            it('returns an array of prices containing titles and values', () => {
                 const expectedPrices = [
                     {
                         title: 'General Admission', value: '£11.00'

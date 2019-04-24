@@ -128,7 +128,7 @@ describe('format event details', () => {
   });
 
   describe('#formatPrices', () => {
-    describe('with a single price', () => {
+    describe('when receiving a single price', () => {
       it('returns a string containing the price title and value', () => {
         const prices = [
           {
@@ -142,7 +142,7 @@ describe('format event details', () => {
       });
     });
 
-    describe('with multiple prices', () => {
+    describe('when receiving multiple prices', () => {
       it('returns a string of price titles and values, separated by commas', () => {
         const prices = [
           {
