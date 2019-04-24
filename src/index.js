@@ -13,7 +13,7 @@ const createStore = require('./event-details/store').createStore;
 
 const outputFilePath = './src/events-output.csv';
 const allEventsUrl = 'https://www.wegottickets.com/searchresults/all';
-const csvHeaders = ['artists', 'city', 'venue', 'date', 'price'];
+const csvHeaders = ['artists', 'city', 'venue', 'date', 'prices'];
 
 const scrapeEventDetails = async (
     url = allEventsUrl,

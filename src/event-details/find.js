@@ -46,22 +46,26 @@ const findDateAndTime = eventPage => {
         .map((html) => html.trim());
 };
 
-const findPrice = eventPage => {
+const findPrices = eventPage => {
     const $ = cheerio.load(eventPage);
-    return $('.BuyBox').find('strong').text();
+
+    return $('.BuyBox').map((_index, element) => ({
+        title: $(element).find('h2').text(),
+        value: $(element).find('strong').text()
+    })).get();
 };
 
 const findEventDetails = eventPage => {
     const artists = findArtists(eventPage);
     const cityAndVenue = findCityAndVenue(eventPage);
     const dateAndTime = findDateAndTime(eventPage);
-    const price = findPrice(eventPage);
+    const prices = findPrices(eventPage);
 
     return {
         artists,
         cityAndVenue,
         dateAndTime,
-        price,
+        prices,
     };
 };
 
@@ -71,6 +75,6 @@ module.exports = {
     findArtists,
     findCityAndVenue,
     findDateAndTime,
-    findPrice,
+    findPrices,
     findEventDetails,
 }

@@ -34,15 +34,17 @@ const formatVenue = cityAndVenue => {
 
 const formatDateAndTime = dateAndTime => dateAndTime.join('. ');
 
+const formatPrices = prices => prices.map(price => `${price.title}: ${price.value}`).join(', ');
+
 const formatEventDetails = unformattedDetails => {
-  const {artists, cityAndVenue, dateAndTime, price } = unformattedDetails;
+  const { artists, cityAndVenue, dateAndTime, prices } = unformattedDetails;
 
   return {
     artists: formatArtists(artists),
     city: formatCity(cityAndVenue),
     venue: formatVenue(cityAndVenue),
     date: formatDateAndTime(dateAndTime),
-    price,
+    prices: formatPrices(prices),
   };
 };
 
@@ -55,4 +57,5 @@ module.exports = {
   formatEventDetails,
   formatHeaders,
   formatDateAndTime,
+  formatPrices,
 };
