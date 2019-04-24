@@ -6,12 +6,13 @@ const findEventLinks = require('../../src/event-details/find').findEventLinks;
 const findCityAndVenue = require('../../src/event-details/find').findCityAndVenue;
 const findArtists = require('../../src/event-details/find').findArtists;
 const findDateAndTime = require('../../src/event-details/find').findDateAndTime;
-const findPrice = require('../../src/event-details/find').findPrice;
+const findPrices = require('../../src/event-details/find').findPrices;
 const findEventDetails = require('../../src/event-details/find').findEventDetails;
 
 const eventListPage = require('../helpers/event-list-page.spec').eventListPage;
 const musicEventPage = require('../helpers/music-event-page.spec').musicEventPage;
 const noTypeEventPage = require('../helpers/no-type-event-page.spec').noTypeEventPage;
+const multiPriceEventPage = require('../helpers/multi-price-event-page.spec').multiPriceEventPage;
 
 describe('find event information', () => {
     describe('#findEventType', () => {
@@ -83,12 +84,36 @@ describe('find event information', () => {
         });
     });
 
-    describe('#findPrice', () => {
-        it('finds price from HTML', () => {
-            const expectedPrice = '£11.00';
+    describe('#findPrices', () => {
+        describe('when only one price exists', () => {
+            it('returns an array of one object containing a title and value', () => {
+                const expectedPrices = [{ title: 'General Admission', value: '£11.00' }];
+    
+                const prices = findPrices(musicEventPage);
+                expect(prices).to.eql(expectedPrices);
+            });
+        });
 
-            const price = findPrice(musicEventPage);
-            expect(price).to.equal(expectedPrice);
+        describe('when more than one price exists', () => {
+            it('returns an array of objects containing a title and value', () => {
+                const expectedPrices = [
+                    {
+                        title: 'General Admission', value: '£11.00'
+                    },
+                    {
+                        title: 'CONCESSIONS', value: '£9.90'
+                    },
+                    {
+                        title: 'Family Ticket (2 adults & 2 children)', value: '£23.10'
+                    },
+                    {
+                        title: 'school children', value: '£3.30'
+                    },
+                ];
+    
+                const prices = findPrices(multiPriceEventPage);
+                expect(prices).to.eql(expectedPrices);
+            });
         });
     });
 
@@ -98,7 +123,9 @@ describe('find event information', () => {
                 'artists': 'PUPPY',
                 'cityAndVenue': 'LEEDS: The Brudenell Social Club',
                 'dateAndTime': ['Wed 24th Apr, 2019', 'Door time: 7:30pm'],
-                'price': '£11.00',
+                'prices': [ 
+                    { title: 'General Admission', value: '£11.00' }
+                ],
             };
             
             const details = findEventDetails(musicEventPage);

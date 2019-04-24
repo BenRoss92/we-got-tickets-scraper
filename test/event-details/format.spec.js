@@ -7,21 +7,22 @@ const formatArtists = require('../../src/event-details/format').formatArtists;
 const formatEventDetails = require('../../src/event-details/format').formatEventDetails;
 const formatHeaders = require('../../src/event-details/format').formatHeaders;
 const formatDateAndTime = require('../../src/event-details/format').formatDateAndTime;
+const formatPrices = require('../../src/event-details/format').formatPrices;
 
 describe('format headers', () => {
   describe('#formatHeaders', () => {
     it('formats an array of headers into CSV headers', () => {
-      const headerArray = ['artists', 'city', 'venue', 'date', 'price'];
+      const headerArray = ['artists', 'city', 'venue', 'date', 'prices'];
 
       const headerString = formatHeaders(headerArray);
       
-      expect(headerString).to.eql("artists,city,venue,date,price\n");
+      expect(headerString).to.eql("artists,city,venue,date,prices\n");
     });
   });
 });
 
 describe('format event details', () => {
-  const formattingWarning = 'WARNING: CHECK FORMATTING'; 
+  const formattingWarning = 'WARNING: CHECK FORMATTING';
 
   describe('#formatCity', () => {
     it('returns the correctly formatted city', () => {
@@ -126,6 +127,45 @@ describe('format event details', () => {
     });
   });
 
+  describe('#formatPrices', () => {
+    describe('with a single price', () => {
+      it('returns a string containing the price title and value', () => {
+        const prices = [
+          {
+              title: 'General Admission', value: '£11.00'
+          },
+        ];
+  
+        const expectedPrices = 'General Admission: £11.00';
+  
+        expect(formatPrices(prices)).to.equal(expectedPrices);
+      });
+    });
+
+    describe('with multiple prices', () => {
+      it('returns a string of price titles and values, separated by commas', () => {
+        const prices = [
+          {
+              title: 'General Admission', value: '£11.00'
+          },
+          {
+              title: 'CONCESSIONS', value: '£9.90'
+          },
+          {
+              title: 'Family Ticket (2 adults & 2 children)', value: '£23.10'
+          },
+          {
+              title: 'school children', value: '£3.30'
+          },
+        ];
+  
+        const expectedPrices = 'General Admission: £11.00, CONCESSIONS: £9.90, Family Ticket (2 adults & 2 children): £23.10, school children: £3.30';
+  
+        expect(formatPrices(prices)).to.equal(expectedPrices);
+      });
+    });
+  });
+
   describe('#formatEventDetails', () => {
     it('correctly formats unformatted event details', () => {
       // given
@@ -133,7 +173,9 @@ describe('format event details', () => {
         artists: 'PUPPY',
         cityAndVenue: 'LEEDS: The Brudenell Social Club',
         dateAndTime: ['Wed 24th Apr, 2019', 'Door time: 7:30pm'],
-        price: '£11.00',
+        prices: [
+          { title: 'General Admission', value: '£11.00' }
+        ],
       };
 
       const formattedDetails = {
@@ -141,7 +183,7 @@ describe('format event details', () => {
         city: 'Leeds',
         venue: 'The Brudenell Social Club',
         date: 'Wed 24th Apr, 2019. Door time: 7:30pm',
-        price: '£11.00',
+        prices: 'General Admission: £11.00',
       };
 
       // when

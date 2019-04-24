@@ -71,7 +71,9 @@ describe('fetch event details', () => {
                 artists: 'PUPPY',
                 cityAndVenue: 'LEEDS: The Brudenell Social Club',
                 dateAndTime: ['Wed 24th Apr, 2019', 'Door time: 7:30pm'],
-                price: '£11.00',
+                prices: [ 
+                    { title: 'General Admission', value: '£11.00' }
+                ],
             };
 
             nock(hostName)
