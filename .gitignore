@@ -1,5 +1,11 @@
+# Mac OS X Desktop Services Store
+.DS_Store
+
 # node modules
 node_modules
+
+# VS Code debugger config
+.vscode
 
 # test/ output file
 test/helpers/events-output.spec.csv
