@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const createCsvWriter = require('csv-writer').createObjectCsvWriter;
 
 const fetchEventLinks = require('./event-details/fetch').fetchEventLinks;
@@ -28,7 +30,7 @@ const scrapeEventDetails = async (
 
     const headerString = formatHeaders(headers);
 
-    await createStore(path, headerString);
+    await createStore(fs, path, headerString);
     console.log(`File '${path}' successfully created with headers:\n ${headerString}`);
 
     const eventLinks = await fetchEventLinks(url);

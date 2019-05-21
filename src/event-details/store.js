@@ -1,6 +1,4 @@
-const fs = require('fs');
-
-const createStore = (path, data) => {
+const createStore = (fs, path, data) => {
     return new Promise((resolve, reject) => {
         fs.writeFile(path, data, (err) => {
             if (err) {
