@@ -1,6 +1,8 @@
 const chai = require('chai');
 const expect = chai.expect;
 
+const sinon = require('sinon');
+
 const fs = require('fs');
 
 const createStore = require('../../src/event-details/store').createStore;
