@@ -12,11 +12,11 @@ describe('manage store of events', () => {
         const data = 'blah';
         let writeFileStub;
 
-        beforeEach(() => {
+        beforeEach('stub the fs.writeFile method with no behaviour', () => {
             writeFileStub = sinon.stub(fs, 'writeFile');
         });
 
-        afterEach(() => {
+        afterEach('remove the fs.writeFile stub (from our default sandbox)', () => {
             writeFileStub.restore();
         });
 
