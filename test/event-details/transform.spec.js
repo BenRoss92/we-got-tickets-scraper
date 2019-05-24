@@ -19,7 +19,7 @@ describe('Transform', () => {
 
         const expectedCsvString = 'Puppy,Leeds,The Brudenell Social Club,"Wed 24th Apr, 2019. Door time: 7:30pm",General Admission: £11.00\n';
 
-        const csvString = transformToCsv(createCsvStringifier, headers, [eventDetails]);
+        const csvString = transformToCsv(createCsvStringifier, headers, eventDetails);
 
         expect(csvString).to.equal(expectedCsvString);
     });

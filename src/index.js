@@ -43,7 +43,7 @@ const scrapeEventDetails = async (
 
         const formattedEvent = formatEventDetails(unformattedEvent);
 
-        const csvString = transformToCsv(createCsvStringifier, headers, [formattedEvent]);
+        const csvString = transformToCsv(createCsvStringifier, headers, formattedEvent);
 
         await appendStore(fs, path, csvString);
         console.log(`Successfully saved event to file path '${path}'`);

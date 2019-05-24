@@ -1,9 +1,9 @@
-const transformToCsv = (createCsvStringifier, headers, records) => {
+const transformToCsv = (createCsvStringifier, headers, eventDetails) => {
     const csvStringifier = createCsvStringifier({
         header: headers,
     });
     
-    return csvStringifier.stringifyRecords(records);
+    return csvStringifier.stringifyRecords([eventDetails]);
 };
 
 module.exports = {
