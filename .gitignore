@@ -10,8 +10,5 @@ node_modules
 # My notes on the project
 my-notes.md
 
-# test/ output file
-test/helpers/events-output.spec.csv
-
 # src/ output file
 src/events-output.csv

@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const createCsvWriter = require('csv-writer').createObjectCsvWriter;
+const createCsvStringifier = require('csv-writer').createObjectCsvStringifier;
 
 const fetchEventLinks = require('./event-details/fetch').fetchEventLinks;
 const fetchHtmlDoc = require('./event-details/fetch').fetchHtmlDoc;
@@ -11,7 +11,10 @@ const findEventDetails = require('./event-details/find').findEventDetails;
 const formatEventDetails = require('./event-details/format').formatEventDetails;
 const formatHeaders = require('./event-details/format').formatHeaders;
 
+const transformToCsv = require('./event-details/transform').transformToCsv;
+
 const createStore = require('./event-details/store').createStore;
+const appendStore = require('./event-details/store').appendStore;
 
 const outputFilePath = './src/events-output.csv';
 const allEventsUrl = 'https://www.wegottickets.com/searchresults/all';
@@ -22,12 +25,6 @@ const scrapeEventDetails = async (
     path = outputFilePath,
     headers = csvHeaders,
 ) => {
-    const csvWriter = createCsvWriter({
-        path,
-        header: headers,
-        append: true,
-    });
-
     const headerString = formatHeaders(headers);
 
     await createStore(fs, path, headerString);
@@ -46,7 +43,9 @@ const scrapeEventDetails = async (
 
         const formattedEvent = formatEventDetails(unformattedEvent);
 
-        await csvWriter.writeRecords([formattedEvent]);
+        const csvString = transformToCsv(createCsvStringifier, headers, formattedEvent);
+
+        await appendStore(fs, path, csvString);
         console.log(`Successfully saved event to file path '${path}'`);
     });
 

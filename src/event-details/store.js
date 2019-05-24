@@ -4,7 +4,19 @@ const createStore = (fs, path, data) => {
             if (err) {
                 reject(err);
             } else {
-                resolve();
+                resolve(data);
+            }
+        });
+    });
+};
+
+const appendStore = (fs, path, data) => {
+    return new Promise((resolve, reject) => {
+        fs.appendFile(path, data, (err) => {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(data);
             }
         });
     });
@@ -12,4 +24,5 @@ const createStore = (fs, path, data) => {
 
 module.exports = {
     createStore,
+    appendStore,
 };
