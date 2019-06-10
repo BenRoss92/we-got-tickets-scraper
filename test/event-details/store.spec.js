@@ -30,9 +30,9 @@ describe('manage store of events', () => {
             
             expect(writeFileStub.calledOnce).to.be.true;
             
-            expect(writeFileStub.getCall(0).args[0]).to.equal(testPath);
-            expect(writeFileStub.getCall(0).args[1]).to.equal(data);
-            expect(writeFileStub.getCall(0).args[2]).to.be.a('function');
+            expect(writeFileStub.firstCall.args[0]).to.equal(testPath);
+            expect(writeFileStub.firstCall.args[1]).to.equal(data);
+            expect(writeFileStub.firstCall.args[2]).to.be.a('function');
         });
 
         describe('when fs.writeFile is successful', () => {
@@ -79,9 +79,9 @@ describe('manage store of events', () => {
 
             expect(appendFileStub.calledOnce).to.be.true;
             
-            expect(appendFileStub.getCall(0).args[0]).to.equal(testPath);
-            expect(appendFileStub.getCall(0).args[1]).to.equal(csvString);
-            expect(appendFileStub.getCall(0).args[2]).to.be.a('function');
+            expect(appendFileStub.firstCall.args[0]).to.equal(testPath);
+            expect(appendFileStub.firstCall.args[1]).to.equal(csvString);
+            expect(appendFileStub.firstCall.args[2]).to.be.a('function');
         });
 
         describe('when fs.appendFile is successful', () => {
