@@ -1,5 +1,7 @@
 # WeGotTickets Scraper
 
+[![Build Status](https://travis-ci.org/BenRoss92/we-got-tickets-scraper.svg?branch=master)](https://travis-ci.org/BenRoss92/we-got-tickets-scraper)
+
 ## Coding challenge requirements
 
 ### Brief
