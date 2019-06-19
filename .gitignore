@@ -8,7 +8,7 @@ node_modules
 .vscode
 
 # My notes on the project
-my-notes.md
+my-notes
 
 # src/ output file
 src/events-output.csv
