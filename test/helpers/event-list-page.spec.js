@@ -501,7 +501,7 @@ module.exports = {
             
                 <div class="content block-group chatterbox-margin">
                     <h2>
-                        <a href="https://www.wegottickets.com/f/11814" class="event_link">MOSAIC WORKSHOP WITH HELEN CLUES</a>
+                        <a href="https://www.wegottickets.com/event/11814" class="event_link">MOSAIC WORKSHOP WITH HELEN CLUES</a>
                     </h2>
                     
                     <div class="block diptych chatterbox-margin">
@@ -513,7 +513,7 @@ module.exports = {
                     </div>
                     
                     <div class="block diptych text-right">
-                        <a class='button unavailable' href='https://www.wegottickets.com/f/11814'>Sold out</a>
+                        <a class='button unavailable' href='https://www.wegottickets.com/event/11814'>Sold out</a>
                     </div>
                 </div>
             

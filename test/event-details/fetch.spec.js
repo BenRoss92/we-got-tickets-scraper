@@ -43,7 +43,7 @@ describe('fetch event details', () => {
                 'https://www.wegottickets.com/event/448418',
                 'https://www.wegottickets.com/event/447081',
                 'https://www.wegottickets.com/event/448370',
-                'https://www.wegottickets.com/f/11814',
+                'https://www.wegottickets.com/event/11814',
                 'https://www.wegottickets.com/event/447864',
                 'https://www.wegottickets.com/event/434408',
                 'https://www.wegottickets.com/event/447389',
