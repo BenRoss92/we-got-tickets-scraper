@@ -6,7 +6,7 @@
 
 ### Brief
 
-The WeGotTickets UK homepage is at https://www.wegottickets.com/. Write software that scrapes concert information from the pages on this site and outputs the data in a machine readable format of your choice (e.g. JSON, XML, CSV etc.).
+The WeGotTickets UK homepage is at https://www.wegottickets.com/. Write software that scrapes concert information from the pages on this site and outputs the data in a machine readable format of your choice (e.g. JSON, XML, CSV etc.). Your script should be able to run without any input.
 
 The first page of the 'browse all listings' section of the site is at https://www.wegottickets.com/searchresults/all
 
@@ -24,6 +24,7 @@ We are only interested in musical events, but don’t worry if your script outpu
 * Fetch all event links shown on an event list page
 * For all links, scrape and format the desired data
 * Store all data for an event list page in a CSV file and indicate success or failure
+* Scrape only music events
 
 ### What I ran out of time to complete
 
