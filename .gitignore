@@ -7,8 +7,5 @@ node_modules
 # VS Code debugger config
 .vscode
 
-# My notes on the project
-my-notes
-
 # src/ output file
 src/events-output.csv
